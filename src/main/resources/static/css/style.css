@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+/*------------------------------ COMMON ------------------------------*/
+html {
+    font-size: 100%;
+}
+body {
+    line-height: 1.7;
+    color: #432
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%
+}
+p {
+    overflow-wrap: break-word;
+}
+.wrapper{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 4%;
+}
+.text-white{
+  color: white;
+}
+.form-btn-inline{
+  display: inline-block;
+}
+.display-flex{
+  display: flex;
+}
+.display-flex-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+/*-----BUTTON(from https://developer.mozilla.org/ja/docs/Web/HTML/Element/button)-----*/
+.user-btn {
+    margin: 20px auto;
+    border: 0;
+    line-height: 2;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: #432;
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 30%, rgba(0, 0, 0, 0));
+    box-shadow:
+        inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+        inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+}
+.user-btn:hover {
+    background-color: rgb(107, 79, 53);
+}
+.user-btn a{
+    color: white;
+}
+.user-btn input{
+    color: white;
+}
+.user-btn a:hover{
+    border-bottom: 2px solid #432;
+    line-height: 1rem;
+}
+.user-btn input:hover{
+    border-bottom: 2px solid #432;
+    line-height: 1rem;
+}
+
+/*-----h1-----*/
+.page-header{
+    padding: 5px auto;
+    background-color: #432;
+    margin-bottom: 80px;
+}
+.page-header a{
+    color: white;
+}
+.page-header a:hover{
+  color: lightgrey;
+}
+.age-header button:hover{
+  color: lightgrey;
+}
+.page-header nav{
+    margin: auto 0;
+}
+
+/*------------------------------ HEADER ------------------------------*/
+.main-nav{
+    display: flex;
+    list-style: none;
+}
+.main-nav li{
+    margin-left: 18px;
+    color: white;
+
+}
+.header-flex{
+    max-width: 1000px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+/*------------------------------ INDEX ------------------------------*/
+.article-link{
+  padding: 5px 5px 10px;
+  border-radius: 15px;
+  border: 2px solid #888;
+  margin-bottom: 20px;
+}
+.article-link h2{
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.article-link button:hover{
+  color: rgb(107, 79, 53);
+}
+.article-link a{
+  color: #432;
+}
+.article-link a:hover{
+  color:rgb(107, 79, 53);
+  border-bottom: 1px solid #432;
+}
+
+
+
