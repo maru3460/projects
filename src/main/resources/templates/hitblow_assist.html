@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    <meta name="description" content="Hit&amp;Blow assist program">
+    <meta name="viewport" content="wide=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Hit&amp;Blow Assistant</title>
+  </head>
+  
+  <script th:inline="javascript">
+    document.addEventListener("DOMContentLoaded", function(){
+      var btn = document.getElementById("hb-input-form");
+      var canBackHistory = /*[[${userSession.canBackHitBlowHistory()}]]*/ false;
+      
+      btn.addEventListener("click", strToInt);
+      
+      toggleBackHistoryButton(canBackHistory);
+      
+      var plusBtns = document.querySelectorAll(".hitblow-plus");
+      plusBtns.forEach(function (plusBtn) {
+        plusBtn.addEventListener("click", plusBtnCheck);
+      });
+  
+      var minusBtns = document.querySelectorAll(".hitblow-minus");
+      minusBtns.forEach(function (minusBtn) {
+        minusBtn.addEventListener("click", minusBtnCheck);
+      });
+    });
+    
+    function strToInt(){
+      var numInputs = document.getElementsByClassName("hb-input");
+      
+      for (var i = 0; i < numInputs.length; i++) {
+        var numInput = numInputs[i];
+        var rtn = parseInt(numInput.value);
+        numInput.value = rtn;
+      }
+      
+      document.getElementById("hb-input-form").submit();
+    }
+
+    function toggleBackHistoryButton(canBackHistory) {
+      console.log(canBackHistory); // デバッグ用
+      var backHistoryForm = document.getElementById('canBackHistory');
+  
+      if (canBackHistory) {
+        backHistoryForm.style.display = 'block';
+      } else {
+        backHistoryForm.style.display = 'none';
+      }
+    }
+    
+    function plusBtnCheck(e) {
+      e.preventDefault();
+  
+      const fieldName = e.currentTarget.getAttribute("data-field");
+      const input = document.querySelector("input[name='" + fieldName + "']");
+      let currentVal = parseInt(input.value);
+      if (!isNaN(currentVal)) {
+        if (currentVal < input.getAttribute("max")) {
+          input.value = currentVal + 1;
+        }
+      } else {
+        input.value = 0;
+      }
+  
+      input.dispatchEvent(new Event('change'));
+    }
+  
+    function minusBtnCheck(e) {
+      e.preventDefault();
+  
+      const fieldName = e.currentTarget.getAttribute("data-field");
+      const input = document.querySelector("input[name='" + fieldName + "']");
+      let currentVal = parseInt(input.value);
+  
+      if (!isNaN(currentVal)) {
+        if (currentVal > input.getAttribute("min")) {
+          input.value = currentVal - 1;
+        }
+      } else {
+        input.value = 0;
+      }
+  
+      input.dispatchEvent(new Event('change'));
+    }
+  </script>
+  
+  <body>
+    <div th:insert="~{fragment :: common-header}"></div>
+    
+    <main>
+      <section id="hitblow-assist" class="wrapper display-flex-between">
+        
+        <article id="hitblow-assist-article">
+          <p>履歴</p>
+          <table id="hb-history">
+            <thead>
+              <tr>
+                <th>入力値</th>
+                <th>Hit</th>
+                <th>Blow</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="nums : ${userSession.getHitBlowList()}">
+                <td th:text="${nums.get(0)}"></td>
+                <td th:text="${nums.get(1)}"></td>
+                <td th:text="${nums.get(2)}"></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div th:if="${clear}">
+            <p th:text="${clear}"></p>
+          </div>
+          
+          <div th:unless="${clear}">
+            <p><span th:text="${inputValue}"></span>を入力してください。</p>
+            
+            <form id="hb-form" action="/home/hitblow_assist" method="get">
+              <input class="hb-input" type="hidden" name="inputValue" th:value="${inputValue}">
+              
+              <p>hit</p>
+              <div class="hitblow-plus-minus-form display-flex">
+
+                <div class="hitblow-minus" data-field="hit">
+                  <button class="hitblow-minus-btn">
+                    <p>-</p>
+                  </button>
+                </div>
+      
+                <input class="hitblow-input" type="number" name="hit" value="0" min="0" max="3" readonly>
+      
+                <div class="hitblow-plus" data-field="hit">
+                  <button class="hitblow-plus-btn">
+                    <p>+</p>
+                  </button>
+                </div>
+      
+              </div>
+              
+              <p>blow</p>
+              <div class="hitblow-plus-minus-form display-flex">
+
+                <div class="hitblow-minus" data-field="blow">
+                  <button class="hitblow-minus-btn">
+                    <p>-</p>
+                  </button>
+                </div>
+      
+                <input class="hitblow-input" type="number" name="blow" value="0" min="0" max="3" readonly>
+      
+                <div class="hitblow-plus" data-field="blow">
+                  <button class="hitblow-plus-btn">
+                    <p>+</p>
+                  </button>
+                </div>
+      
+              </div>
+              
+              <button id="hb-input-form" class="user-btn" type="submit">送信</button>
+            </form>          
+          </div>
+          
+          <div class="display-flex">
+            <form class="form-btn-inline" action="/home/hitblow_assist/reset" method="post">
+              <button class="user-btn" type="submit">リセット</button>
+            </form>
+            <form class="form-btn-inline" id="canBackHistory" action="/home/hitblow_assist/back_history" method="post">
+              <button class="user-btn" type="submit">一個戻す</button>
+            </form>
+          </div>
+        </article>
+        
+        <aside id="hitblow-assist-aside">
+          <h2 class="aside-title">使い方</h2>
+          <p>想定アプリ</p>
+          <iframe width="300" height="200" src="https://www.youtube-nocookie.com/embed/YoJ9v2Oi0Qs?si=QgC9b8mTPLbzvvZt" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+          </iframe>
+          <p>１「あなたの数字を決めてください。」は適当な数字を入力してください。</p>
+          <p>２その後、以下の手順を、正解するまで繰り返してください。</p>
+          <p>・「相手の数字を推理してください。」において左記の数字を入力する</p>
+          <p>・hitとblowを入力し、送信する</p>
+        </aside>        
+      </section>
+    </main> 
+  </body>
+</html>

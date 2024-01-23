@@ -18,6 +18,16 @@
         <div th:if="${errorMessage}">
           <p th:text="${errorMessage}" class="error-message"></p>
         </div>
+        
+        <div class="article-link">
+          <form id="hb-form" action="hitblow_assist" method="get">
+            <input class="hb-input" type="hidden" name="inputValue" value="0">
+            <input class="hb-input" type="hidden" name="hit" value="0">
+            <input class="hb-input" type="hidden" name="blow" value="0">
+            <button id="hb-input-form" type="submit"><h2>Hit&amp;Blow Assistant</h2></button>
+          </form>
+          <p>Hit&amp;Blowのアシストをしてくれるプログラムです。</p>
+        </div>
                   
       </section>
     </main>    
