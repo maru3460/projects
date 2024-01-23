@@ -13,10 +13,15 @@ import jp.co.maru.exception.NotAppropriateInputException;
 import jp.co.maru.utils.ArrayUtil;
 import jp.co.maru.utils.PosUtil;
 
+/*
+ * Poses管理用クラス
+ */
 @Component
 @Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class ManagePoses implements Serializable{
 	private WebApplicationContext webApplicationContext;
+	
+	//とりうる三桁の数字のリスト
 	private ArrayList<ArrayList<ArrayList<Integer>>> poses = new ArrayList<>();
 	private ArrayList<ArrayList<ArrayList<ArrayList<Integer>>>> posesHistory = new ArrayList<>();
 	private final int[] NUMS = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -32,6 +37,11 @@ public class ManagePoses implements Serializable{
 		return ArrayUtil.deepCopy3AryTo3Ary(poses);
 	}
 	
+	/*
+	 * 次に入力する数字を決める際に使う関数
+	 * 
+	 * Posesの中からランダムに数字を取ってくる
+	 */
 	public ArrayList<Integer> getRandomPos() throws NotAppropriateInputException{
     	ArrayList<Integer> rtn = new ArrayList<>();
     	int x = 0;
@@ -68,6 +78,11 @@ public class ManagePoses implements Serializable{
     	}
     }
 	
+	/*
+	 * 入力した数字とそのHitとBlowをPosesに適用する関数
+	 * 
+	 * 歴史をさかのぼれるようにする際は、必ずmakePosesHistory()を呼び出した後に呼び出してください
+	 */
 	public void applyNewNums(int hit, int blow, int x, int y, int z) throws NotAppropriateInputException{
     	try {
     		ArrayList<ArrayList<ArrayList<Integer>>> tmpPoses = generatePoses(hit, blow, x, y, z);
@@ -80,6 +95,9 @@ public class ManagePoses implements Serializable{
     	}
     }
 	
+	/*
+	 * ある数字が三桁のどこかに入ることが確定したときに使う関数
+	 */
 	public void oneDecided(int n) throws NotAppropriateInputException{
     	ArrayList<Integer> tmpNums = new ArrayList<>();
         for(int i: NUMS) {
@@ -100,6 +118,9 @@ public class ManagePoses implements Serializable{
     	}
     }
 	
+	/*
+	 * ある数字が三桁のどこにも入らないことがが確定したときに使う関数
+	 */
 	public void oneRemove(int n) throws NotAppropriateInputException{
     	ArrayList<Integer> tmpNums = new ArrayList<>();
         for(int i: NUMS) {
@@ -118,14 +139,25 @@ public class ManagePoses implements Serializable{
     	}
     }
 	
+	/*
+	 * 3Hitの時に呼び出す関数
+	 * 
+	 * .clear()でもそのままでも処理は変わらなかったりする
+	 */
 	public void clearGame() {
     	poses.clear();
     }
 	
+	/*
+	 * 歴史を記録する
+	 */
 	public void makePosesHistory() {
     	posesHistory.add(ArrayUtil.deepCopy3AryTo3Ary(poses));
 	}
 	
+	/*
+	 * 歴史をさかのぼれるかどうか判定する関数
+	 */
 	public boolean canBackHistory() {
     	if(posesHistory.size() == 0) {
     		return false;
@@ -134,16 +166,27 @@ public class ManagePoses implements Serializable{
     	}
     }
 	
+	/*
+	 * 歴史を一つ戻す関数
+	 * 
+	 * .canBackHistoryを呼び出してtrueだったときのみ使用してください
+	 */
 	public void backHistory() {
     	poses = posesHistory.get(posesHistory.size() - 1);
     	posesHistory.remove(posesHistory.size() - 1);
     }
 	
+	/*
+	 * リセット
+	 */
 	public void reset() {
     	poses.clear();
     	posesHistory.clear();
     }
 	
+	/*
+	 * デバッグ用
+	 */
 	@Override
     public String toString() {
     	sb = new StringBuilder();

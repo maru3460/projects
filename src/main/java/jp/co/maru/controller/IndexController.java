@@ -21,11 +21,6 @@ public class IndexController {
 	public String index(Model m) {
 		m.addAttribute("userSession", userSession);
 		
-		if(userSession.isError()) {
-			m.addAttribute("errorMessage", userSession.getErrorMessage());
-			userSession.reset();
-		}
-		
 		return "index";
 	}
 	
