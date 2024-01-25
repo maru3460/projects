@@ -130,4 +130,75 @@ p {
 }
 
 
+/*------------------------------ HITBLOW ASSIST ------------------------------*/
+#hitblow-assist-article{
+  width: 60%;
+}
+#hitblow-assist-aside{
+  width: 30%;
+}
+
+.aside-title{
+  font-size: 1.5rem;
+  border-bottom: 1px solid #432;
+  margin-bottom: 15px;
+}
+
+/*-----#hb-history-----*/
+#hb-history{
+  border-collapse: collapse;
+  margin: 25px 0 30px;
+  min-width: 400px;
+  box-shadow: 5px 5px 4px #ccc ;
+}
+#hb-history thead tr{
+  background-color: #432;
+  color: white;
+  text-align: center;
+}
+#hb-history th, #hb-history td{
+  padding: 12px 15px;
+}
+#hb-history tbody tr{
+  border-left: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+}
+#hb-history tbody tr:last-of-type{
+  border-bottom: 2px solid #432;
+}
+
+/*plus minus btn*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
+}
+
+.hitblow-input, .hitblow-plus, .hitblow-minus{
+    border: 1px solid #432;
+    height: 40px;
+    text-align: center;
+}
+
+.hitblow-input{
+    border-right: 0px;
+    border-left: 0px;
+    width: 60px;
+}
+
+.hitblow-plus, .hitblow-minus{
+    width: 40px;
+}
+
+.hitblow-plus button, .hitblow-minus button{
+    font-size: 1.5rem;
+}
+
+.hitblow-plus:hover, .hitblow-minus:hover{
+    background-color: #432;
+}
+
+.hitblow-plus:hover p, .hitblow-minus:hover p{
+    color: white;
+}
 

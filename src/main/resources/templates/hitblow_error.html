@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Session Test">
+    <meta name="viewport" content="wide=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Programs</title>
+  </head>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      var canBackHistory = userSession.canBackHistory();
+      
+      toggleBackHistoryButton(canBackHistory);
+    });
+
+    function toggleBackHistoryButton(canBackHistory) {
+      var backHistoryForm = document.getElementById('canBaskHistory');
+      var backButton = backHistoryForm.querySelector('.user-btn');
+  
+      if (canBackHistory) {
+        backHistoryForm.style.display = 'block';
+      } else {
+        backHistoryForm.style.display = 'none';
+      }
+    }
+  </script>
+
+  <body>
+    <div th:insert="~{fragment :: common-header}"></div>
+            
+    <main>
+      <section id="hitblow_error" class="wrapper">
+        <p th:text="${userSession.getErrorMessage()}" class="error-message"></p>
+        
+        <div class="display-flex">
+          <form class="form-btn-inline" action="/home/hitblow_assist/reset" method="post">
+            <button class="user-btn" type="submit">リセット</button>
+          </form>
+          <form class="form-btn-inline" id="canBackHistory" action="/home/hitblow_assist/back_history" method="post">
+            <button class="user-btn" type="submit">一個戻す</button>
+          </form>
+        </div>
+                  
+      </section>
+    </main>    
+  </body>
+</html>
