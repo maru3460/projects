@@ -26,6 +26,8 @@ public class HitBlowController {
 	
 	@RequestMapping(value="", method = RequestMethod.GET) 
 	public String index(@ModelAttribute HitBlowForm form, Model m) {
+		System.out.println(m.asMap().keySet());
+		System.out.println(m.asMap().values());
 		try {
 			//HitBlowFormの入力があったら歴史を進める
 			if(form.getInputValue() != 0) {
