@@ -7,7 +7,7 @@ springbootで作ったものです。
 
 ## 実行  
 git clone ---  
-cd hitblow_assist  
+cd projects  
 chmod +x gradlew  
 
 ./gradlew build  
