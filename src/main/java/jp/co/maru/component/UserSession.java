@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class UserSession implements Serializable {	
+	
 	/*-------------------- HITBLOW --------------------*/
+	
 	private List<List<Integer>> hbList = new ArrayList<>();
 	private boolean isHitBlowError = false;
 	
@@ -46,6 +48,30 @@ public class UserSession implements Serializable {
 	public void resetHitBlow() {
 		hbList = new ArrayList<>();
 		isHitBlowError = false;
+	}
+	
+	/*-------------------- Gihyo Scraping --------------------*/
+	
+	private List<List<String>> gihyoBooksData = new ArrayList<>();
+	
+	public boolean ifExistGihyoBooksData() {
+		if(gihyoBooksData.size() > 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public List<List<String>> getGihyoBooksData(){
+		return gihyoBooksData;
+	}
+	
+	public void setGihyoBooksData(List<List<String>> gihyoBooksData) {
+		this.gihyoBooksData = gihyoBooksData;
+	}
+	
+	public void resetGihyoBooksData() {
+		gihyoBooksData.clear();
 	}
 	
 	/*-------------------- COMMON --------------------*/

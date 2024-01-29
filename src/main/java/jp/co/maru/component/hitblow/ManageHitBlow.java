@@ -1,4 +1,4 @@
-package jp.co.maru.component;
+package jp.co.maru.component.hitblow;
 
 import java.io.Serializable;
 import java.util.ArrayList;

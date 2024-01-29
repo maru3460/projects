@@ -35,6 +35,11 @@ p {
   display: flex;
   justify-content: space-between;
 }
+.top-dashed{
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px dashed #432;
+}
 
 /*-----BUTTON(from https://developer.mozilla.org/ja/docs/Web/HTML/Element/button)-----*/
 .user-btn {
@@ -137,11 +142,19 @@ p {
 #hitblow-assist-aside{
   width: 30%;
 }
-
-.aside-title{
+#hitblow-assist-aside h2{
   font-size: 1.5rem;
   border-bottom: 1px solid #432;
   margin-bottom: 15px;
+}
+.caution{
+  margin-top: 20px;
+  display: inline-block;
+  border-bottom: 1px solid #432;
+  color: #432;
+}
+.list-in-list{
+  margin-top: 10px;
 }
 
 /*-----#hb-history-----*/
@@ -202,3 +215,18 @@ input[type="number"]::-webkit-inner-spin-button {
     color: white;
 }
 
+/*------------------------------ SCRAPING-GIHYO ------------------------------*/
+.book-datas{
+  padding: 5px 5px 10px;
+  border-radius: 15px;
+  border: 2px solid #888;
+  margin-bottom: 20px;
+  display: flex;
+}
+.book-datas a{
+  color: #432;
+}
+.book-datas a:hover{
+  color:rgb(107, 79, 53);
+  border-bottom: 1px solid #432;
+}
