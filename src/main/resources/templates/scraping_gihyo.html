@@ -19,10 +19,11 @@
         <p>・ProcessBuilderでpython実行</p>
         <p>・pythonでスクレイピング、データをファイルに保存</p>
         <p>・javaでそのデータを受け取る</p>
-        <p>・htmlに渡して表示</p>
+        <p>・htmlに渡して表示<br><br></p>        
+        <p>起動時＋毎日24時に更新しています。</p>
         
-        <div th:if="${userSession.ifExistGihyoBooksData()}">
-          <div class="book-datas" th:each="data : ${userSession.getGihyoBooksData()}">
+        <div th:if="${booksData}">
+          <div class="book-datas" th:each="data : ${booksData}">
             
             <img th:src="${data.get(2)}" width="50" height="75"/>
            <p><a th:href="${data.get(1)}" th:text="${data.get(0)}"></a></p>
@@ -30,8 +31,9 @@
           </div>
         </div>
         
-        <form action="/home/py_scraping/fetch" method="post"><button class="user-btn" type="submit">データを取ってくる</button> </form>
-        <p>時間がかかります</p>
+        <div th:unless="${booksData}">
+          <p>スレイピングに失敗しました。</p>
+        </div>
                           
       </section>
     </main>    

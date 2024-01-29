@@ -95,7 +95,7 @@
       <section id="hitblow-assist" class="wrapper display-flex-between">
         
         <article id="hitblow-assist-article">
-          <p>履歴</p>
+          <h2>履歴</h2>
           <table id="hb-history">
             <thead>
               <tr>
@@ -173,19 +173,26 @@
               <button class="user-btn" type="submit">一個戻す</button>
             </form>
           </div>
+          
+          <p class="caution">※リロードはしないでください。homeから元のページに戻れます。</p>
         </article>
         
         <aside id="hitblow-assist-aside">
-          <h2 class="aside-title">使い方</h2>
+          <h2>使い方</h2>
           <p>想定アプリ</p>
           <iframe width="300" height="200" src="https://www.youtube-nocookie.com/embed/YoJ9v2Oi0Qs?si=QgC9b8mTPLbzvvZt" 
             title="YouTube video player" frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
           </iframe>
-          <p>１「あなたの数字を決めてください。」は適当な数字を入力してください。</p>
-          <p>２その後、以下の手順を、正解するまで繰り返してください。</p>
-          <p>・「相手の数字を推理してください。」において左記の数字を入力する</p>
-          <p>・hitとblowを入力し、送信する</p>
+          <ol>            
+            <li>「あなたの数字を決めてください。」は適当な数字を入力してください。</li>
+            <li>
+              <ul class="list-in-list">その後、以下の手順を、正解するまで繰り返してください。  
+                <li class="top-dashed">「相手の数字を推理してください。」において左記の数字を入力する</li>
+                <li>hitとblowを入力し、送信する</li>                             
+              </ul>             
+            </li>
+          </ol>
         </aside>        
       </section>
     </main> 

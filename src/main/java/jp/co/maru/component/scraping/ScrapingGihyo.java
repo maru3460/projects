@@ -1,4 +1,4 @@
-package jp.co.maru.component;
+package jp.co.maru.component.scraping;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -17,8 +17,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import com.google.gson.JsonIOException;
@@ -27,7 +25,6 @@ import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 
 @Component
-@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class ScrapingGihyo {
 	
 	private final Path pyFilePath = Paths.get("").toAbsolutePath().resolve(Paths.get("fetch_data.py"));
