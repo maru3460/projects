@@ -4,5 +4,5 @@
     "data_file_path": "data_file.txt",
     "image_dir_path_from_python": "src/main/resources/static/images/",
     "image_dir_path_from_java": "/images/",
-    "venv_path": "C:\\Users\\shun1\\Documents\\ShortCut\\for_vscode\\venv\\Scripts\\activate"
+    "venv_path": "venv/Scripts/activate"
 }

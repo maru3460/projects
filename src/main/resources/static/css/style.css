@@ -202,3 +202,18 @@ input[type="number"]::-webkit-inner-spin-button {
     color: white;
 }
 
+/*------------------------------ SCRAPING-GIHYO ------------------------------*/
+.book-datas{
+  padding: 5px 5px 10px;
+  border-radius: 15px;
+  border: 2px solid #888;
+  margin-bottom: 20px;
+  display: flex;
+}
+.book-datas a{
+  color: #432;
+}
+.book-datas a:hover{
+  color:rgb(107, 79, 53);
+  border-bottom: 1px solid #432;
+}

@@ -14,7 +14,7 @@ import jp.co.maru.component.ScrapingGihyo;
 import jp.co.maru.component.UserSession;
 
 @Controller
-@RequestMapping("/home/pys")
+@RequestMapping("/home/py_scraping")
 public class PyScrapingController {
 	
 	private UserSession userSession;

@@ -42,7 +42,7 @@ public class ScrapingGihyo {
 		JsonObject jsonObject = JsonParser.parseReader(new FileReader("config.json")).getAsJsonObject();
 		dataFilePath = Paths.get("").toAbsolutePath().resolve(jsonObject.get("data_file_path").getAsString());
 		imageDirPath = Paths.get("").toAbsolutePath().resolve(jsonObject.get("image_dir_path_from_java").getAsString());	
-		venvPath = Paths.get(jsonObject.get("venv_path").getAsString());
+		venvPath = Paths.get("").toAbsolutePath().resolve(jsonObject.get("venv_path").getAsString());
 		delete();
 	}
 	
