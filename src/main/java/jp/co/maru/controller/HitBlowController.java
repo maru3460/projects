@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.maru.component.ManageHitBlow;
 import jp.co.maru.component.UserSession;
+import jp.co.maru.component.hitblow.ManageHitBlow;
 import jp.co.maru.exception.NotAppropriateInputException;
 import jp.co.maru.model.HitBlowForm;
 
@@ -43,14 +43,12 @@ public class HitBlowController {
 				m.addAttribute("userSession", userSession);
 				m.addAttribute("clear", userSession.getClearMessage());
 				
-				debug();
 				return "hitblow_assist";
 				
 			}else {
 				m.addAttribute("userSession", userSession);
 				m.addAttribute("inputValue", manageHitBlow.getNextInputNumber());
 				
-				debug();
 				return "hitblow_assist";
 			}
 			
@@ -71,7 +69,6 @@ public class HitBlowController {
 			m.addAttribute("userSession", userSession);
 			m.addAttribute("inputValue", manageHitBlow.getNextInputNumber());
 			
-			debug();
 			return "hitblow_assist";
 		}else {
 			userSession.resetHitBlow();
@@ -79,7 +76,6 @@ public class HitBlowController {
 			
 			m.addAttribute("userSession", userSession);
 			
-			debug();
 			return "index";
 		}
 	}
@@ -92,7 +88,6 @@ public class HitBlowController {
 		m.addAttribute("userSession", userSession);
 		m.addAttribute("inputValue", manageHitBlow.getNextInputNumber());
 		
-		debug();
 		return "hitblow_assist";
 	}
 	

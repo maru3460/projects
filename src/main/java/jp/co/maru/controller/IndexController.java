@@ -19,11 +19,8 @@ public class IndexController {
 
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public String index(Model m) {
-		System.out.println(m.asMap().keySet());
-		System.out.println(m.asMap().values());
 		m.addAttribute("userSession", userSession);
 		
 		return "index";
-	}
-	
+	}	
 }
