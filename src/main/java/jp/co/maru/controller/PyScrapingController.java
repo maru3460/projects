@@ -12,7 +12,6 @@ import com.google.gson.JsonSyntaxException;
 
 import jp.co.maru.component.UserSession;
 import jp.co.maru.component.scraping.ManageScraping;
-import jp.co.maru.component.scraping.ScrapingGihyo;
 
 @Controller
 @RequestMapping("/home/py_scraping")
@@ -22,12 +21,9 @@ public class PyScrapingController {
 	
 	private ManageScraping manageScraping;
 	
-	private ScrapingGihyo scrapingGihyo;
-	
-	public PyScrapingController(UserSession userSession, ManageScraping manageScraping, ScrapingGihyo scrapingGihyo){
+	public PyScrapingController(UserSession userSession, ManageScraping manageScraping){
 		this.userSession = userSession;
 		this.manageScraping = manageScraping;
-		this.scrapingGihyo = scrapingGihyo;
 	}
 	
 	@RequestMapping(value="/", method = RequestMethod.GET)
@@ -39,21 +35,5 @@ public class PyScrapingController {
 		}		
         
 		return "scraping_gihyo";
-	}	
-	
-	/*
-	@RequestMapping(value="/fetch", method = RequestMethod.POST)
-	public String fetch(Model m) {
-		scrapingGihyo.delete();
-		userSession.resetGihyoBooksData();
-		if(!scrapingGihyo.fetchData()) {
-			return "scraping_gihyo";
-		};
-		userSession.setGihyoBooksData(scrapingGihyo.getBooksData());
-		
-		m.addAttribute("userSession", userSession);  
-		
-		return "scraping_gihyo";
 	}
-	*/
 }
