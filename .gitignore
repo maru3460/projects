@@ -5,6 +5,8 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 venv/
+data_file.txt
+src/main/resources/static/images/
 
 ### STS ###
 .apt_generated
